@@ -27,11 +27,12 @@ var chartGroup = svg.append("g")
 var chosenXAxis = "poverty";
 var chosenYAxis = "smokes";
 
+
 function xScale(data, chosenXAxis) {
     // create scales
     var xLinearScale = d3.scaleLinear()
-      .domain([d3.min(data, d => +d[chosenXAxis]) * 0.1,
-        d3.max(data, d => +d[chosenXAxis]) * 1.1
+      .domain([d3.min(data, d => +d[chosenXAxis]) * 1,
+        d3.max(data, d => +d[chosenXAxis]) * 1
       ])
       .range([0, width]);
   
@@ -41,8 +42,8 @@ function xScale(data, chosenXAxis) {
 function yScale(data, chosenYAxis) {
   // create scales
   var yLinearScale = d3.scaleLinear()
-      .domain([d3.min(data, d => +d[chosenYAxis]) * 0.1,
-      d3.max(data, d => +d[chosenYAxis]) * 1.0
+      .domain([d3.min(data, d => +d[chosenYAxis]) * 1,
+      d3.max(data, d => +d[chosenYAxis]) * 1
       ])
       .range([height, 0]);
 
@@ -185,7 +186,7 @@ d3.csv("./assets/data/data.csv").then(function(data, err) {
     var healthcareLabel = xLabelsGroup.append("text")
       .attr("value", "healthcare") // value to grab for event listener
       .classed("inactive", true)
-      .text("Healthcare (%)")
+      .text("Lacks Healthcare (%)")
       .attr("y", xLabelSpacer * 2)
     
     var incomeLabel = xLabelsGroup.append("text")
@@ -239,18 +240,16 @@ d3.csv("./assets/data/data.csv").then(function(data, err) {
   
           console.log(chosenXAxis)
   
-          // updates x scale for new data
+          //updates x scale for new data
           xLinearScale = xScale(data, chosenXAxis);
   
           // updates x axis with transition
           xAxis = renderXAxes(xLinearScale, xAxis);
   
-          // updates circles with new x values
-          //renderCircles(circlesGroup, newXScale, newYScale, chosenXAxis, chosenYAxis) 
+          //updates circles with new x values
           circlesGroup = renderCircles(circlesGroup, xLinearScale, yLinearScale, chosenXAxis, chosenYAxis);
   
           // updates tooltips with new info
-          //circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
           labelsGroup = updateText(circleLabels,xLinearScale,yLinearScale,chosenXAxis, chosenYAxis);
   
           povertyLabel
