@@ -17,11 +17,11 @@ The data set included with the assignment is based on 2014 ACS 1-year estimates 
 
 - West Virginia and Kentucky have high smoking % and high % in poverty  
 
-- Colorado lowest obesity. Hawaii and Washington DC lowest obesity and heighest median income
+- Colorado lowest obesity. Hawaii and Washington DC lowest obesity and highest median income
 
-- Mississipi, West Virginia, Arkansas hightest obesity, lowest median income
+- Mississipi, West Virginia, Arkansas highest obesity, lowest median income
 
-- Maryland hightest median income
+- Maryland highest median income
 
 - New Hamshire lowest % in poverty
 
